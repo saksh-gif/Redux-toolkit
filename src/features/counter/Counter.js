@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { add, edit, remove } from "../counter/CounterSlice";
+import { add, edit, remove, deleteAll } from "../counter/CounterSlice";
 
 export function Counter() {
   const [text, setText] = useState("");
@@ -17,7 +17,7 @@ export function Counter() {
     <div>
       <div>
         <input onChange={(e) => setText(e.target.value)} value={text} />
-        
+
         <button
           aria-label="Increment value"
           onClick={() => {
@@ -28,7 +28,7 @@ export function Counter() {
         >
           {condition ? "Edit" : "Add"}
         </button>
-
+        <button onClick={() => dispatch(deleteAll())}>Delete All</button>
         {data.map((i, index) => {
           return (
             <div

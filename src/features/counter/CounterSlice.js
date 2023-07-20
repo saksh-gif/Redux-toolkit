@@ -18,9 +18,12 @@ export const counterSlice = createSlice({
     remove: (state, action) => {
       state.data.splice(action.payload, 1);
     },
+    deleteAll: (state, action) => {
+      state.data.splice("");
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { add, edit, remove } = counterSlice.actions;
+export const { add, edit, remove, deleteAll } = counterSlice.actions;
 export default counterSlice.reducer;
