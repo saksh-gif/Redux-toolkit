@@ -12,7 +12,15 @@ export function Counter() {
   function deleteUser(index) {
     dispatch(remove(index));
   }
-
+  function addUser(val) {
+    dispatch(add(val));
+    setText("");
+  }
+  function editUser(val, index) {
+    dispatch(edit(val, index));
+    setCondition(!condition);
+    setText("");
+  }
   return (
     <div>
       <div>
@@ -21,9 +29,7 @@ export function Counter() {
         <button
           aria-label="Increment value"
           onClick={() => {
-            condition
-              ? dispatch(edit({ data: text, index: any }))
-              : dispatch(add(text));
+            condition ? editUser({ data: text, index: any }) : addUser(text);
           }}
         >
           {condition ? "Edit" : "Add"}
